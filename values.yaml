@@ -58,6 +58,8 @@ antiAffinity:
 docservice:
   replicas: 2
   readinessProbeEnabled: true
+  annotations:
+     # linkerd.io/inject: enabled
   readinessProbe:
     failureThreshold: 2
     httpGet:
@@ -130,6 +132,8 @@ converter:
   replicas: 2
   containerImage: onlyoffice/docs-converter-de:7.0.1.37
   imagePullPolicy: IfNotPresent
+  annotations:
+     # linkerd.io/inject: enabled
   resources:
     ##Example:
     ##requests:
@@ -153,6 +157,8 @@ service:
 
 ingress:
   enabled: false
+  annotations:
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
   host: ""
   ssl:
     enabled: false

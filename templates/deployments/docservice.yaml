@@ -4,6 +4,10 @@ metadata:
   name: docservice
   labels:
     app: docservice
+  annotations:
+    {{- range $key, $value := .Values.docservice.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 spec:
   replicas: {{ .Values.docservice.replicas }}
   selector:

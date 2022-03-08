@@ -4,6 +4,10 @@ metadata:
   name: converter
   labels:
     app: converter
+  annotations:
+    {{- range $key, $value := .Values.converter.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
 spec:
   replicas: {{ .Values.converter.replicas }}
   selector:
